@@ -1,19 +1,20 @@
+import com.wtwoo.page3.buildsrc.Libs
+
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    compileSdkVersion buildConfig.compileSdk
 
     defaultConfig {
         applicationId "com.wtwoo.page3"
-        minSdkVersion 16
-        targetSdkVersion 30
+        minSdkVersion buildConfig.minSdk
+        targetSdkVersion buildConfig.targetSdk
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -34,12 +35,28 @@ android {
 
 dependencies {
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.3.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation Libs.Kotlin.stdlib
+    implementation Libs.AndroidX.coreKtx
+    implementation Libs.AndroidX.appcompat
+    implementation Libs.AndroidX.constraintlayout
+    implementation Libs.AndroidX.multidex
+    implementation Libs.AndroidX.Paging.runtime
+    implementation Libs.AndroidX.Paging.rxjava2
+
+    implementation Libs.Mdc.material
+    implementation Libs.timber
+
+    implementation Libs.RxJava2.rxjava
+    implementation Libs.RxJava2.rxandroid
+    implementation Libs.RxJava2.rxkotlin
+
+    implementation Libs.Retrofit.retrofit
+    implementation Libs.Retrofit.gsonConverter
+    implementation Libs.Retrofit.rxjava2Adapter
+
+    implementation Libs.OkHttp.loggingInterceptor
+
+    testImplementation Libs.junit
+    androidTestImplementation Libs.AndroidX.Test.Ext.junit
+    androidTestImplementation Libs.AndroidX.Test.espressoCore
 }

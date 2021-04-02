@@ -1,13 +1,20 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+import com.wtwoo.page3.buildsrc.Libs
+
 buildscript {
-    ext.kotlin_version = "1.4.20"
+    ext.buildConfig = [
+            'compileSdk': 30,
+            'minSdk'    : 23,
+            'targetSdk' : 30,
+    ]
+
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.1.0"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath Libs.androidGradlePlugin
+        classpath Libs.Kotlin.gradlePlugin
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
