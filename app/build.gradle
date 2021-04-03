@@ -3,6 +3,8 @@ import com.wtwoo.page3.buildsrc.Libs
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -31,6 +33,12 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    androidExtensions {
+        experimental = true
+    }
+    dataBinding {
+        enabled true
+    }
 }
 
 dependencies {
@@ -38,13 +46,21 @@ dependencies {
     implementation Libs.Kotlin.stdlib
     implementation Libs.AndroidX.coreKtx
     implementation Libs.AndroidX.appcompat
+    implementation Libs.AndroidX.recyclerview
     implementation Libs.AndroidX.constraintlayout
     implementation Libs.AndroidX.multidex
     implementation Libs.AndroidX.Paging.runtime
     implementation Libs.AndroidX.Paging.rxjava2
+    implementation Libs.AndroidX.Navigation.fragment
+    implementation Libs.AndroidX.Navigation.ui
 
     implementation Libs.Mdc.material
     implementation Libs.timber
+
+    implementation Libs.Koin.viewmodel
+    implementation Libs.Koin.fragment
+    implementation Libs.Koin.scope
+    implementation Libs.Koin.extCore
 
     implementation Libs.RxJava2.rxjava
     implementation Libs.RxJava2.rxandroid
@@ -55,6 +71,12 @@ dependencies {
     implementation Libs.Retrofit.rxjava2Adapter
 
     implementation Libs.OkHttp.loggingInterceptor
+
+    implementation Libs.Glide.glide
+    implementation Libs.Glide.transformations
+    annotationProcessor Libs.Glide.compiler
+    kapt Libs.Glide.compiler
+    kapt Libs.Glide.lifecycleCompiler
 
     testImplementation Libs.junit
     androidTestImplementation Libs.AndroidX.Test.Ext.junit

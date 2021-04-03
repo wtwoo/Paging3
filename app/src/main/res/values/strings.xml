@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">page3</string>
+    <string name="api_key">api_key</string>
+    <string name="poster">Poster</string>
+
+    <string name="error">Error</string>
+    <string name="retry">Retry</string>
+    <string name="cancel">Cancel</string>
 </resources>
