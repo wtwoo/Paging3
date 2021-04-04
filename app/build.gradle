@@ -42,6 +42,7 @@ android {
 }
 
 dependencies {
+    implementation project(':data')
 
     implementation Libs.Kotlin.stdlib
     implementation Libs.AndroidX.coreKtx

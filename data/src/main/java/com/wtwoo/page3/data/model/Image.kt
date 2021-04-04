@@ -6,11 +6,7 @@ import kotlinx.android.parcel.IgnoredOnParcel
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Image(val url: String): Parcelable {
-    companion object {
-        private const val PATH = "https://image.tmdb.org/t/p"
-    }
-
+data class Image(val url: String) : Parcelable {
     @IgnoredOnParcel
     val small: Uri = Uri.parse("$PATH/w92/$url")
 
@@ -22,4 +18,9 @@ data class Image(val url: String): Parcelable {
 
     @IgnoredOnParcel
     val original: Uri = Uri.parse("$PATH/original/$url")
+
+    companion object {
+        private const val PATH = "https://image.tmdb.org/t/p"
+    }
+
 }

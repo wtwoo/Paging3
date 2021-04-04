@@ -19,17 +19,9 @@ class MoviesMapper {
                         it.id,
                         it.popularity,
                         it.video,
-                        it.posterPath?.let { path ->
-                            Image(
-                                path
-                            )
-                        },
+                        it.posterPath?.let { path -> Image(path) },
                         it.adult,
-                        it.backdropPath?.let { path ->
-                            Image(
-                                path
-                            )
-                        },
+                        it.backdropPath?.let { path -> Image(path) },
                         it.originalLanguage,
                         it.originalTitle,
                         it.title,

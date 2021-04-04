@@ -5,8 +5,6 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.rxjava2.flowable
 import com.wtwoo.page3.data.model.Movies
-import com.wtwoo.page3.data.repositories.movies.MoviesPagingSource
-import com.wtwoo.page3.data.repositories.movies.MoviesRepository
 import io.reactivex.Flowable
 
 class MoviesRepositoryImpl(private val pagingSource: MoviesPagingSource) :
