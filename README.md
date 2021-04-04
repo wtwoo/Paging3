@@ -1,5 +1,7 @@
 # Paging3 (work-in-progress)
 
+## Android development
+
 ### API keys
 
 You need to supply API / client keys for the various services the
