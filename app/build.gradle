@@ -7,6 +7,9 @@ plugins {
     id 'kotlin-kapt'
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
     compileSdkVersion buildConfig.compileSdk
 
@@ -18,6 +21,7 @@ android {
         versionName "1.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        resValue("string", "api_key", properties.getProperty("TBDB_API_KEY"))
     }
 
     buildTypes {

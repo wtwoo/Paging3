@@ -8,6 +8,11 @@ app uses:
 - [TBDB](https://www.themoviedb.org/)
 - [API Overview](https://www.themoviedb.org/documentation/api)
 
+To run this example, API key must be set in local.properties.
+```
+TBDB_API_KEY="enter your API key"
+```
+
 ## License
 
 ```
