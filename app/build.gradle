@@ -77,11 +77,7 @@ dependencies {
 
     implementation Libs.OkHttp.loggingInterceptor
 
-    implementation Libs.Glide.glide
-    implementation Libs.Glide.transformations
-    annotationProcessor Libs.Glide.compiler
-    kapt Libs.Glide.compiler
-    kapt Libs.Glide.lifecycleCompiler
+    implementation Libs.Coil.coil
 
     testImplementation Libs.junit
     androidTestImplementation Libs.AndroidX.Test.Ext.junit

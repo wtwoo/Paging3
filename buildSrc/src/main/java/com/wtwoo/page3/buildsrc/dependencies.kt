@@ -66,12 +66,9 @@ object Libs {
         const val extCore = "org.koin:koin-core-ext:$version"
     }
 
-    object Glide {
-        private const val version = "4.11.0"
-        const val glide = "com.github.bumptech.glide:glide:$version"
-        const val compiler = "com.github.bumptech.glide:compiler:$version"
-        const val lifecycleCompiler = "android.arch.lifecycle:compiler:1.0.0"
-        const val transformations = "jp.wasabeef:glide-transformations:4.2.0"
+    object Coil {
+        private const val version = "1.1.1"
+        const val coil = "io.coil-kt:coil:$version"
     }
 
     object RxJava2 {
