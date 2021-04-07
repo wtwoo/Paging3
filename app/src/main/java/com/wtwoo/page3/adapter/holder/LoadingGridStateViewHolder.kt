@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.RecyclerView
-import com.wtwoo.page3.R
 import com.wtwoo.page3.databinding.LoadingGridItemBinding
 
 class LoadingGridStateViewHolder(
@@ -17,15 +16,10 @@ class LoadingGridStateViewHolder(
     }
 
     companion object {
-        fun create(parent: ViewGroup): LoadingGridStateViewHolder {
-            val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.loading_grid_item, parent, false)
-
-            val binding = LoadingGridItemBinding.bind(view)
-
-            return LoadingGridStateViewHolder(
-                binding
-            )
+        fun from(parent: ViewGroup): LoadingGridStateViewHolder {
+            val layoutInflater = LayoutInflater.from(parent.context)
+            val binding = LoadingGridItemBinding.inflate(layoutInflater, parent, false)
+            return LoadingGridStateViewHolder(binding)
         }
     }
 }
