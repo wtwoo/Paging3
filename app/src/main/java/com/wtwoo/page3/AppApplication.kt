@@ -25,7 +25,6 @@ class AppApplication : Application() {
             fragmentFactory()
             modules(
                 listOf(
-                    fragmentModule,
                     viewModelModule,
                     repositoryModule,
                     apiManagerModule,

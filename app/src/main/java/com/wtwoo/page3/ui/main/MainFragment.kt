@@ -3,7 +3,6 @@ package com.wtwoo.page3.ui.main
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import androidx.lifecycle.ViewModelProvider
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.wtwoo.page3.R
@@ -15,7 +14,6 @@ import io.reactivex.disposables.CompositeDisposable
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
-    internal val tag = this.javaClass.simpleName
     private lateinit var adapter: MoviesRxAdapter
     private val compositeDisposable = CompositeDisposable()
     private val viewModel: MainViewModel by viewModel()
