@@ -1,5 +1,6 @@
 package com.wtwoo.page3.ui.main
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
@@ -9,7 +10,9 @@ import com.wtwoo.page3.data.repositories.movies.MoviesRepository
 import com.wtwoo.page3.data.model.Movies
 import io.reactivex.Flowable
 
-class MainViewModel(private val repository: MoviesRepository) : ViewModel() {
+class MainViewModel @ViewModelInject constructor(
+    private val repository: MoviesRepository
+) : ViewModel() {
     fun getFavoriteMovies(): Flowable<PagingData<Movies.Movie>> {
         return repository
             .getMovies()

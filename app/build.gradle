@@ -2,6 +2,7 @@ import com.wtwoo.page3.buildsrc.Libs
 
 plugins {
     id 'com.android.application'
+    id 'dagger.hilt.android.plugin'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
@@ -62,10 +63,13 @@ dependencies {
     implementation Libs.Mdc.material
     implementation Libs.timber
 
-    implementation Libs.Koin.viewmodel
-    implementation Libs.Koin.fragment
-    implementation Libs.Koin.scope
-    implementation Libs.Koin.extCore
+    implementation Libs.Dagger.dagger
+    implementation Libs.Hilt.library
+    kapt Libs.Hilt.compiler
+
+    implementation Libs.AndroidX.Hilt.work
+    implementation Libs.AndroidX.Hilt.viewmodel
+    kapt Libs.AndroidX.Hilt.compiler
 
     implementation Libs.RxJava2.rxjava
     implementation Libs.RxJava2.rxandroid

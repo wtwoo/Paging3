@@ -1,23 +1,24 @@
 package com.wtwoo.page3.data.repositories.movies
 
 import androidx.paging.rxjava2.RxPagingSource
-import com.wtwoo.page3.data.repositories.TMDBService
-import com.wtwoo.page3.data.model.Movies
 import com.wtwoo.page3.data.mappers.MoviesMapper
+import com.wtwoo.page3.data.model.Movies
+import com.wtwoo.page3.data.repositories.TMDBService
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import java.util.*
+import javax.inject.Inject
+import javax.inject.Named
 
-class MoviesPagingSource(
+class MoviesPagingSource @Inject constructor(
     private val service: TMDBService,
-    private val apiKey: String,
     private val mapper: MoviesMapper,
-    private val locale: Locale
+    private val locale: Locale,
+    @Named("apiKey")  private val apiKey: String
 ) : RxPagingSource<Int, Movies.Movie>() {
 
     override fun loadSingle(params: LoadParams<Int>): Single<LoadResult<Int, Movies.Movie>> {
         val position = params.key ?: 1
-
         return service.popularMovieRx(apiKey, position, locale.language)
             .subscribeOn(Schedulers.io())
             .map { mapper.transform(it, locale) }

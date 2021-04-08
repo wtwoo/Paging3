@@ -1,22 +1,35 @@
 package com.wtwoo.page3.inject
 
+import android.content.Context
 import com.wtwoo.page3.R
-import com.wtwoo.page3.data.repositories.TMDBService
-import com.wtwoo.page3.data.repositories.movies.MoviesPagingSource
 import com.wtwoo.page3.data.mappers.MoviesMapper
-import org.koin.android.ext.koin.androidApplication
-import org.koin.core.module.Module
-import org.koin.dsl.module
-import retrofit2.Retrofit
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.*
+import javax.inject.Named
+import javax.inject.Singleton
 
-val apiManagerModule: Module = module {
-    single {
-        MoviesPagingSource(
-            service = (get() as Retrofit).create(TMDBService::class.java),
-            apiKey = androidApplication().getString(R.string.api_key),
-            mapper = MoviesMapper(),
-            locale = Locale.getDefault()
-        )
+@Module
+@InstallIn(ApplicationComponent::class)
+object ApiModule {
+
+    @Provides
+    @Singleton
+    @Named("apiKey")
+    fun provideApiKey(
+        @ApplicationContext context: Context
+    ): String = context.getString(R.string.api_key)
+
+    @Provides
+    fun provideLocale(): Locale {
+        return Locale.getDefault()
+    }
+
+    @Provides
+    fun provideMoviesMapper(): MoviesMapper {
+        return MoviesMapper()
     }
 }

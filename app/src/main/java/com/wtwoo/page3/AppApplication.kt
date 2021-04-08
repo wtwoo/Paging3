@@ -1,14 +1,10 @@
 package com.wtwoo.page3
 
 import android.app.Application
-import com.wtwoo.page3.inject.*
-import org.koin.android.ext.koin.androidContext
-import org.koin.android.ext.koin.androidLogger
-import org.koin.androidx.fragment.koin.fragmentFactory
-import org.koin.core.context.startKoin
-import org.koin.core.logger.Level
+import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
+@HiltAndroidApp
 class AppApplication : Application() {
 
     override fun onCreate() {
@@ -18,19 +14,5 @@ class AppApplication : Application() {
 
     private fun initialize() {
         if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
-
-        startKoin {
-            androidLogger(Level.DEBUG)
-            androidContext(this@AppApplication)
-            fragmentFactory()
-            modules(
-                listOf(
-                    viewModelModule,
-                    repositoryModule,
-                    apiManagerModule,
-                    networkModule,
-                )
-            )
-        }
     }
 }

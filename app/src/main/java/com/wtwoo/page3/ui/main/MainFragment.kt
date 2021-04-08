@@ -3,6 +3,7 @@ package com.wtwoo.page3.ui.main
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.viewModels
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.wtwoo.page3.R
@@ -10,13 +11,14 @@ import com.wtwoo.page3.adapter.LoadingGridStateAdapter
 import com.wtwoo.page3.adapter.MoviesRxAdapter
 import com.wtwoo.page3.base.BaseFragment
 import com.wtwoo.page3.databinding.FragmentMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.disposables.CompositeDisposable
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@AndroidEntryPoint
 class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
     private lateinit var adapter: MoviesRxAdapter
     private val compositeDisposable = CompositeDisposable()
-    private val viewModel: MainViewModel by viewModel()
+    private val viewModel by viewModels<MainViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -31,6 +31,13 @@ object Libs {
         const val legacySupport = "androidx.legacy:legacy-support-v4:1.0.0"
         const val multidex = "androidx.multidex:multidex:2.0.1"
 
+        object Hilt {
+            private const val version = "1.0.0-alpha02"
+            const val work = "androidx.hilt:hilt-work:$version"
+            const val viewmodel = "androidx.hilt:hilt-lifecycle-viewmodel:$version"
+            const val compiler = "androidx.hilt:hilt-compiler:$version"
+        }
+
         object Navigation {
             private const val version = "2.3.0"
             const val fragment = "androidx.navigation:navigation-fragment-ktx:$version"
@@ -58,12 +65,18 @@ object Libs {
         }
     }
 
-    object Koin {
-        private const val version = "2.2.2"
-        const val viewmodel = "org.koin:koin-androidx-viewmodel:$version"
-        const val fragment = "org.koin:koin-androidx-fragment:$version"
-        const val scope = "org.koin:koin-androidx-scope:$version"
-        const val extCore = "org.koin:koin-core-ext:$version"
+    object Dagger {
+        private const val version = "2.28.3"
+        const val dagger = "com.google.dagger:dagger:$version"
+        const val compiler = "com.google.dagger:dagger-compiler:$version"
+    }
+
+    object Hilt {
+        private const val version = "2.28.3-alpha"
+        const val library = "com.google.dagger:hilt-android:$version"
+        const val compiler = "com.google.dagger:hilt-android-compiler:$version"
+        const val testing = "com.google.dagger:hilt-android-testing:$version"
+        const val gradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$version"
     }
 
     object Coil {
