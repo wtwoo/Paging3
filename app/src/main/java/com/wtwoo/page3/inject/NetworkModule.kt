@@ -46,7 +46,6 @@ object NetworkModule {
         }.build()
     }
 
-
     @Provides
     @Singleton
     fun provideTMDBService(retrofit: Retrofit): TMDBService {

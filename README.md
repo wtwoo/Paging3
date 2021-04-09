@@ -1,6 +1,10 @@
 # Paging3 (work-in-progress)
+Application is sample based on MVVM architecture.
 
 ## Android development
+ * Entirely written in [Kotlin](https://kotlinlang.org/)
+ * Uses [Coil](https://github.com/coil-kt/coil) for  image loading library
+ * Uses [Hilt](https://dagger.dev/hilt) for dependency injection
 
 ### API keys
 
