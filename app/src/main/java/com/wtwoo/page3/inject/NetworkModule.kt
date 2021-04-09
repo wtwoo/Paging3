@@ -1,5 +1,7 @@
 package com.wtwoo.page3.inject
 
+import com.wtwoo.page3.BuildConfig
+import com.wtwoo.page3.Constants
 import com.wtwoo.page3.data.repositories.TMDBService
 import dagger.Module
 import dagger.Provides
@@ -16,17 +18,12 @@ import javax.inject.Singleton
 @Module
 @InstallIn(ApplicationComponent::class)
 object NetworkModule {
-    private const val BASE_URL = "https://api.themoviedb.org/3/"
-    private const val CONNECT_TIMEOUT = 10L
-    private const val WRITE_TIMEOUT = 1L
-    private const val READ_TIMEOUT = 20L
-
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl(BASE_URL)
+            .baseUrl(Constants.BASE_URL)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -36,12 +33,15 @@ object NetworkModule {
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder().apply {
-            connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
-            writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
-            readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
+            connectTimeout(1, TimeUnit.MINUTES)
+            readTimeout(30, TimeUnit.SECONDS)
+            writeTimeout(15, TimeUnit.SECONDS)
             retryOnConnectionFailure(true)
             addInterceptor(HttpLoggingInterceptor().apply {
-                level = HttpLoggingInterceptor.Level.BODY
+                level = when {
+                    BuildConfig.DEBUG -> HttpLoggingInterceptor.Level.BODY
+                    else -> HttpLoggingInterceptor.Level.NONE
+                }
             })
         }.build()
     }
