@@ -27,6 +27,11 @@ android {
 dependencies {
     implementation Libs.Google.gson
 
-    implementation Libs.RxJava2.rxjava
-    implementation Libs.Retrofit.retrofit
+    api Libs.RxJava2.rxjava
+
+    api Libs.AndroidX.Paging.rxjava2
+    api Libs.Dagger.dagger
+
+    api Libs.Retrofit.retrofit
+    api Libs.OkHttp.loggingInterceptor
 }

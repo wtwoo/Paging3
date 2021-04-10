@@ -3,7 +3,6 @@ package com.wtwoo.page3.data.repositories.movies
 import androidx.paging.rxjava2.RxPagingSource
 import com.wtwoo.page3.data.mappers.MoviesMapper
 import com.wtwoo.page3.data.model.Movies
-import com.wtwoo.page3.data.repositories.TMDBService
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import java.util.*

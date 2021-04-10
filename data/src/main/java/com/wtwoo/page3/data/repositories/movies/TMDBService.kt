@@ -1,4 +1,4 @@
-package com.wtwoo.page3.data.repositories
+package com.wtwoo.page3.data.repositories.movies
 
 import com.wtwoo.page3.data.response.MoviesResponse
 import io.reactivex.Single

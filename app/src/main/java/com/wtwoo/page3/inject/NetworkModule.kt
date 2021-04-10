@@ -2,7 +2,7 @@ package com.wtwoo.page3.inject
 
 import com.wtwoo.page3.BuildConfig
 import com.wtwoo.page3.Constants
-import com.wtwoo.page3.data.repositories.TMDBService
+import com.wtwoo.page3.data.repositories.movies.TMDBService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
