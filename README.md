@@ -19,7 +19,9 @@ To run this example, API key must be set in local.properties.
 TBDB_API_KEY="enter your API key"
 ```
 
-![Show demo app](arts/pageing3_sample.gif)
+|     Show demo app Sample     |
+|  :-------------------------: |
+|![](arts/pageing3_sample.gif) |
 
 ## License
 
