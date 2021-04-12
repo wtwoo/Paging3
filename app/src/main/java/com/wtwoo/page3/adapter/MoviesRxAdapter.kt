@@ -6,14 +6,9 @@ import androidx.recyclerview.widget.DiffUtil
 import com.wtwoo.page3.adapter.holder.MovieGridViewHolder
 import com.wtwoo.page3.data.model.Movies
 
-class MoviesRxAdapter : PagingDataAdapter<Movies.Movie, MovieGridViewHolder>(
-    COMPARATOR
-) {
-
+class MoviesRxAdapter : PagingDataAdapter<Movies.Movie, MovieGridViewHolder>(COMPARATOR) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieGridViewHolder {
-        return MovieGridViewHolder.create(
-            parent
-        )
+        return MovieGridViewHolder.create(parent)
     }
 
     override fun onBindViewHolder(holder: MovieGridViewHolder, position: Int) {

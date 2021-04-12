@@ -1,5 +1,6 @@
 package com.wtwoo.page3.ui.main
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
@@ -11,58 +12,67 @@ import com.wtwoo.page3.adapter.LoadingGridStateAdapter
 import com.wtwoo.page3.adapter.MoviesRxAdapter
 import com.wtwoo.page3.base.BaseFragment
 import com.wtwoo.page3.databinding.FragmentMainBinding
+import com.wtwoo.page3.ext.toast
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.disposables.CompositeDisposable
 
 @AndroidEntryPoint
 class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
-    private lateinit var adapter: MoviesRxAdapter
-    private val compositeDisposable = CompositeDisposable()
+    private lateinit var moviesAdapter: MoviesRxAdapter
     private val viewModel by viewModels<MainViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        initAdapter()
     }
 
     private fun initView() {
-        //binding.viewmodel = viewModel
+        viewModel.items.observe(viewLifecycleOwner, { items ->
+            moviesAdapter.submitData(lifecycle, items)
+        })
 
-        adapter = MoviesRxAdapter()
+        context?.toast(this, viewModel.toastMessage)
 
-        binding.list.layoutManager = GridLayoutManager(requireContext(), 2)
-        binding.list.adapter = adapter
-        binding.list.adapter = adapter.withLoadStateFooter(
-            footer = LoadingGridStateAdapter()
-        )
-        adapter.addLoadStateListener { loadState ->
+        viewModel.startFavoriteMovies()
+    }
+
+
+    private fun initAdapter() {
+        moviesAdapter = MoviesRxAdapter()
+
+        binding.list.apply {
+            layoutManager = GridLayoutManager(requireContext(), 2)
+            adapter = adapter
+            adapter = moviesAdapter.withLoadStateFooter(footer = LoadingGridStateAdapter())
+        }
+        moviesAdapter.addLoadStateListener { loadState ->
             val errorState = loadState.source.append as? LoadState.Error
                 ?: loadState.source.prepend as? LoadState.Error
                 ?: loadState.append as? LoadState.Error
                 ?: loadState.prepend as? LoadState.Error
 
             errorState?.let {
-                AlertDialog.Builder(requireContext())
-                    .setTitle(R.string.error)
-                    .setMessage(it.error.localizedMessage)
-                    .setNegativeButton(R.string.cancel) { dialog, _ ->
-                        dialog.dismiss()
-                    }
-                    .setPositiveButton(R.string.retry) { _, _ ->
-                        adapter.retry()
-                    }
-                    .show()
+                activity?.showError(it.error.localizedMessage)
             }
         }
-
-        compositeDisposable.add(viewModel.getFavoriteMovies().subscribe {
-            adapter.submitData(lifecycle, it)
-        })
     }
 
-    companion object {
-        fun newInstance(): MainFragment {
-            return MainFragment()
-        }
+    private fun Context.showError(message: String) {
+        AlertDialog.Builder(this)
+            .setTitle(R.string.error)
+            .setMessage(message)
+            .setNegativeButton(R.string.cancel) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .setPositiveButton(R.string.retry) { _, _ ->
+                moviesAdapter.retry()
+            }
+            .show()
     }
+
+    override fun onDestroy() {
+        viewModel.close()
+        super.onDestroy()
+    }
+
 }
