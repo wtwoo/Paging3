@@ -1,5 +1,5 @@
 [![API](https://img.shields.io/badge/API-23%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=23)
-![GitHub license]https://img.shields.io/github/license/wtwoo/Paging3)](LICENSE)
+[![GitHub license](https://img.shields.io/github/license/wtwoo/Paging3)](LICENSE)
 ![GitHub stars](https://img.shields.io/github/stars/wtwoo/Paging3?style=social)
 ![GitHub watchers](https://img.shields.io/github/watchers/wtwoo/Paging3?style=social)
 
