@@ -19,6 +19,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="5"
-            tools:listitem="@layout/movie_grid_item" />
+            tools:listitem="@layout/movie_item" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

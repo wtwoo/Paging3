@@ -3,15 +3,15 @@ package com.wtwoo.page3.adapter
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import com.wtwoo.page3.adapter.holder.MovieGridViewHolder
+import com.wtwoo.page3.adapter.holder.MovieViewHolder
 import com.wtwoo.page3.data.model.Movies
 
-class MoviesRxAdapter : PagingDataAdapter<Movies.Movie, MovieGridViewHolder>(COMPARATOR) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieGridViewHolder {
-        return MovieGridViewHolder.create(parent)
+class MoviesRxAdapter : PagingDataAdapter<Movies.Movie, MovieViewHolder>(COMPARATOR) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
+        return MovieViewHolder.create(parent)
     }
 
-    override fun onBindViewHolder(holder: MovieGridViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         getItem(position)?.let {
             holder.bind(it)
         }

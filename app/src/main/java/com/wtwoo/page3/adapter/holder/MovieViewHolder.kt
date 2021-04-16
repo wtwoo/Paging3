@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.wtwoo.page3.R
 import com.wtwoo.page3.data.model.Movies
-import com.wtwoo.page3.databinding.MovieGridItemBinding
+import com.wtwoo.page3.databinding.MovieItemBinding
 
-class MovieGridViewHolder(private val binding: MovieGridItemBinding) :
+class MovieViewHolder(private val binding: MovieItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(movie: Movies.Movie) {
@@ -17,11 +17,11 @@ class MovieGridViewHolder(private val binding: MovieGridItemBinding) :
     }
 
     companion object {
-        fun create(parent: ViewGroup): MovieGridViewHolder {
+        fun create(parent: ViewGroup): MovieViewHolder {
             val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.movie_grid_item, parent, false)
-            val binding = MovieGridItemBinding.bind(view)
-            return MovieGridViewHolder(binding)
+                .inflate(R.layout.movie_item, parent, false)
+            val binding = MovieItemBinding.bind(view)
+            return MovieViewHolder(binding)
         }
     }
 }

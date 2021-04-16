@@ -8,7 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.wtwoo.page3.R
-import com.wtwoo.page3.adapter.LoadingGridStateAdapter
+import com.wtwoo.page3.adapter.LoadingStateAdapter
 import com.wtwoo.page3.adapter.MoviesRxAdapter
 import com.wtwoo.page3.base.BaseFragment
 import com.wtwoo.page3.databinding.FragmentMainBinding
@@ -43,7 +43,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
         binding.list.apply {
             layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = adapter
-            adapter = moviesAdapter.withLoadStateFooter(footer = LoadingGridStateAdapter())
+            adapter = moviesAdapter.withLoadStateFooter(footer = LoadingStateAdapter())
         }
         moviesAdapter.addLoadStateListener { loadState ->
             val errorState = loadState.source.append as? LoadState.Error
