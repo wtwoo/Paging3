@@ -1,5 +1,7 @@
 package com.wtwoo.page3.inject
 
+import android.content.Context
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.wtwoo.page3.BuildConfig
 import com.wtwoo.page3.Constants
 import com.wtwoo.page3.data.repositories.movies.TMDBService
@@ -7,6 +9,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -31,12 +34,13 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(@ApplicationContext context: Context): OkHttpClient {
         return OkHttpClient.Builder().apply {
             connectTimeout(1, TimeUnit.MINUTES)
             readTimeout(30, TimeUnit.SECONDS)
             writeTimeout(15, TimeUnit.SECONDS)
             retryOnConnectionFailure(true)
+            addInterceptor(ChuckerInterceptor(context))
             addInterceptor(HttpLoggingInterceptor().apply {
                 level = when {
                     BuildConfig.DEBUG -> HttpLoggingInterceptor.Level.BODY

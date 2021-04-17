@@ -106,4 +106,10 @@ object Libs {
         const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$version"
         const val urlconnection = "com.squareup.okhttp3:okhttp-urlconnection:$version"
     }
+
+    object Chucker {
+        private const val version = "3.4.0"
+        const val chucker = "com.github.chuckerteam.chucker:library:$version"
+        const val chucker_no_op = "com.github.chuckerteam.chucker:library-no-op:$version"
+    }
 }
