@@ -5,6 +5,7 @@ import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.wtwoo.page3.BuildConfig
 import com.wtwoo.page3.Constants
 import com.wtwoo.page3.data.repositories.movies.TMDBService
+import com.wtwoo.page3.mock.MockInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -40,6 +41,9 @@ object NetworkModule {
             readTimeout(30, TimeUnit.SECONDS)
             writeTimeout(15, TimeUnit.SECONDS)
             retryOnConnectionFailure(true)
+            if (BuildConfig.DEBUG && BuildConfig.TEST_DATA) {
+                addInterceptor(MockInterceptor())
+            }
             addInterceptor(ChuckerInterceptor(context))
             addInterceptor(HttpLoggingInterceptor().apply {
                 level = when {

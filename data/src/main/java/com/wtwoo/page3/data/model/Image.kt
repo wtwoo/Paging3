@@ -19,6 +19,9 @@ data class Image(val url: String) : Parcelable {
     @IgnoredOnParcel
     val original: Uri = Uri.parse("$PATH/original/$url")
 
+    @IgnoredOnParcel
+    val webOriginal: Uri = Uri.parse(url)
+
     companion object {
         private const val PATH = "https://image.tmdb.org/t/p"
     }

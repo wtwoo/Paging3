@@ -28,6 +28,11 @@ TBDB_API_KEY="enter your API key"
 |  :-------------------------: |
 |![](arts/pageing3_sample.gif) |
 
+
+### TEST DATA(api test)
+ - build.gradle buildConfigField "boolean", "TEST_DATA", "true"
+
+
 ## License
 
 ```

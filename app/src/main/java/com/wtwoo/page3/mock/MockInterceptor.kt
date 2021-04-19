@@ -5,20 +5,27 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.Protocol
 import okhttp3.Response
 import okhttp3.ResponseBody.Companion.toResponseBody
+import timber.log.Timber
 
 class MockInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val uri = chain.request().url.toUri().toString()
+        val encodedPath = chain.request().url.encodedPath
+
         val responseString = when {
-            uri.endsWith("popular") -> getTestJson
+            encodedPath.endsWith("popular") -> getTestJson
             else -> ""
         }
 
+        Timber.d("MockInterceptor intercept uri: $uri")
+        Timber.d("MockInterceptor responseString: $responseString")
         if (responseString.isEmpty()) return chain.proceed(chain.request())
 
         val responseBody = responseString.toByteArray().toResponseBody(
             "application/json".toMediaTypeOrNull()
         )
+
+        Timber.d("MockInterceptor responseString: $responseString")
 
         return chain.proceed(chain.request())
             .newBuilder()
@@ -47,7 +54,7 @@ const val getTestJson = """
             "original_title": "Godzilla vs. Kong",
             "overview": "콩과 보호자들은 정착할 수 있는 곳을 찾아 특별하고 강력한 유대감을 형성하고 있는 지아와 함께 여정을 떠나게 된다. 그러던 중 지구 파괴를 위한 회심의 날을 휘두르는 고질라와 마주하게 되고, 보이지 않는 힘에 의해 맞붙게 된 두 전설의 대결은 지구 깊은 곳에 도사린 수수께끼의 시작에 불과할 뿐이었는데…",
             "popularity": 6065.197,
-            "poster_path": "/sqo672rKMXiLRC5kVcGvBRebkp.jpg",
+            "poster_path": "https://i.pinimg.com/originals/52/c7/ab/52c7ab7f3825f0b804555681b7c6098b.jpg",
             "release_date": "2021-03-24",
             "title": "고질라 VS. 콩",
             "video": false,
