@@ -5,7 +5,6 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.Protocol
 import okhttp3.Response
 import okhttp3.ResponseBody.Companion.toResponseBody
-import timber.log.Timber
 
 class MockInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -17,15 +16,11 @@ class MockInterceptor : Interceptor {
             else -> ""
         }
 
-        Timber.d("MockInterceptor intercept uri: $uri")
-        Timber.d("MockInterceptor responseString: $responseString")
         if (responseString.isEmpty()) return chain.proceed(chain.request())
 
         val responseBody = responseString.toByteArray().toResponseBody(
             "application/json".toMediaTypeOrNull()
         )
-
-        Timber.d("MockInterceptor responseString: $responseString")
 
         return chain.proceed(chain.request())
             .newBuilder()
