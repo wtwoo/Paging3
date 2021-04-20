@@ -107,6 +107,11 @@ object Libs {
         const val urlconnection = "com.squareup.okhttp3:okhttp-urlconnection:$version"
     }
 
+    object Lottie {
+        private const val version = "3.7.0"
+        const val lottie = "com.airbnb.android:lottie:$version"
+    }
+
     object Chucker {
         private const val version = "3.4.0"
         const val chucker = "com.github.chuckerteam.chucker:library:$version"

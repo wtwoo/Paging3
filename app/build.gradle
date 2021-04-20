@@ -88,6 +88,7 @@ dependencies {
     implementation Libs.OkHttp.loggingInterceptor
 
     implementation Libs.Coil.coil
+    implementation Libs.Lottie.lottie
 
     debugImplementation Libs.Chucker.chucker
     releaseImplementation Libs.Chucker.chucker_no_op
