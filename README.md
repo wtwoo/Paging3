@@ -24,13 +24,13 @@ To run this example, API key must be set in local.properties.
 TBDB_API_KEY="enter your API key"
 ```
 
+### TEST DATA(api test)
+ - build.gradle buildConfigField "boolean", "TEST_DATA", "true"
+
+
 |     Show demo app Sample     |
 |  :-------------------------: |
 |![](arts/pageing3_sample.gif) |
-
-
-### TEST DATA(api test)
- - build.gradle buildConfigField "boolean", "TEST_DATA", "true"
 
 
 ## License
