@@ -6,15 +6,6 @@ import coil.load
 import com.wtwoo.page3.data.model.Image
 
 @BindingAdapter("app:load")
-fun setImageLoad(imageView: ImageView, path: Any?) {
-    path?.let {
-        imageView.load(it.toString()) {
-            crossfade(true)
-        }
-    }
-}
-
-@BindingAdapter("app:load")
 fun setImageLoad(imageView: ImageView, image: Image?) {
     image?.let {
         imageView.load(
