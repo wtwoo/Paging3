@@ -1,3 +1,5 @@
 rootProject.name='paging3'
+
+include ':base'
 include ':data'
 include ':app'
