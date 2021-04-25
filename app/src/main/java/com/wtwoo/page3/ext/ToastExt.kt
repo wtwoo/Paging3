@@ -4,7 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
-import com.wtwoo.page3.Event
+import com.wtwoo.page3.util.Event
 
 fun Context.toast(lifecycleOwner: LifecycleOwner, toastEvent: LiveData<Event<Int>>) {
     toastEvent.observe(lifecycleOwner, { event ->

@@ -8,11 +8,11 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.filter
 import androidx.paging.rxjava2.cachedIn
-import com.wtwoo.page3.Event
 import com.wtwoo.page3.R
 import com.wtwoo.page3.base.BaseViewModel
 import com.wtwoo.page3.data.model.Movies
 import com.wtwoo.page3.data.repositories.movies.MoviesRepository
+import com.wtwoo.page3.util.Event
 import io.reactivex.Flowable
 
 class MainViewModel @ViewModelInject constructor(private val repository: MoviesRepository) :
