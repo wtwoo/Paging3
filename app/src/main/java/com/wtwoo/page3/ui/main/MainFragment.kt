@@ -41,8 +41,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
         moviesAdapter = MoviesRxAdapter()
 
         binding.list.apply {
-            layoutManager = GridLayoutManager(requireContext(), 2)
-            adapter = adapter
+            adapter = moviesAdapter
             adapter = moviesAdapter.withLoadStateFooter(footer = LoadingStateAdapter())
         }
         moviesAdapter.addLoadStateListener { loadState ->
